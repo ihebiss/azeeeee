@@ -1,0 +1,20 @@
+
+
+<div class="text-center"><h3>Update a post</h3></div>
+<form class="form-style-9" (ngSubmit)="onSubmit()">
+  <ul>
+    <li>
+      <input class="field-style field-full align-none" type="text" placeholder="Titre" id="street_name"
+      [(ngModel)]="post.picture" name="street_name">  </li>
+  
+  
+  <li>
+    <input class="field-style field-full align-none" type="text"  id="city"
+    [(ngModel)]="post.description" name="city" placeholder="description">
+  </li>
+  <li>
+  <input type="submit" value="update Post" />
+  </li>
+  </ul>
+  </form>
+

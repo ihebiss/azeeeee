@@ -1,0 +1,53 @@
+<section class="about_section layout_padding" style="margin-bottom: 10px">
+  <div class="container">
+
+
+    <span style="font-size: 35px;">Products</span>
+  <br>
+
+    <br>
+
+
+    <br>
+    <div style="margin-bottom: 30px;">
+      <input placeholder="Red" type="text" style="margin-right: 10px;" [(ngModel)]="r">
+      <input placeholder="Green" type="text" style="margin-right: 10px;" [(ngModel)]="g">
+      <input placeholder="Blue" type="text" style="margin-right: 10px;" [(ngModel)]="b">
+      <button (click)="search()" class="btn btn-primary">Search</button>
+  
+    </div>
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let prod of products">
+        <div>
+
+          <div class="card">
+            <div class="img">
+              <img
+                class="img"
+                src="data:image/jpeg;base64,{{prod.image}}" />
+
+            </div>
+
+            <span>{{ prod.name}} </span>
+            <p class="info"> <b>Description :</b> {{ prod.description}}</p>
+            <p class="info"> <b>Price :</b> {{ prod.price}}</p>
+
+
+            <br>
+            <div>
+              <button style="background-color: #f0d43a; "  routerLink="/discount/{{prod.id_product}}"><i class="fa fa-settings" ></i> Discount</button>
+              <button style="background-color: #f0d43a; margin-left: 2; "  routerLink="/AddOrders/{{prod.id_product}}"><i class="fa fa-settings" ></i> Order</button>
+              <button style="background-color: #f0d43a; margin-left: 2; "  routerLink="/AddProductImage/{{prod.id_product}}"><i class="fa fa-settings" ></i> Image</button>
+
+            </div>
+            <br>
+
+          </div>
+        </div>
+        <br>
+      </div>
+
+    </div>
+
+  </div>
+</section>

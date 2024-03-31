@@ -1,0 +1,96 @@
+
+
+
+
+<input type="text" name="c" [(ngModel)]="searchtext" class="form-control bg-gradient-light px-4" placeholder="Search">
+<br>
+
+
+<div class="container">
+  <div class="row">
+<article class="profile" *ngFor="let service of services | filter:searchtext" style="margin-left: 60px;margin-bottom: 80px;">
+	<div class="profile-image">
+		<img src="data:image/jpeg;base64,{{service.picture}}" alt="img" />
+	</div>
+	<h2 class="profile-username">{{service.title}}</h2>
+	<small class="profile-user-handle"> {{service.description}}</small>
+  <strong >Likes: {{service.isLiked}}</strong>
+  <strong>Dislikes: {{service.isDisliked }}</strong>
+	<div class="profile-actions">
+		<button class="btn btn--primary" routerLink="/AddAppointements">Appointment</button>
+		<button class="btn btn--icon" (click)="likeService(service.id_service)">
+			<i class="fa fa-thumbs-up"></i>
+		</button>
+		<button class="btn btn--icon" (click)="dislikeService(service.id_service)">
+			<i class="fa fa-thumbs-down"></i>
+		</button>
+	</div>
+  <button *ngIf="service.Picture == null" class="btn btn-primary" style="margin-right: 10px; margin-top: 0x;" routerLink="/AddImages/{{service.id_service}}">Image</button>
+  <a routerLink="/oneService/{{ service.id_service}}" class="btn btn-primary">Details<span class="material-icons"></span></a>
+    
+</article>
+  </div>
+
+</div>
+<div class="text-center">
+  <button  style="margin-bottom: 30px;background-color: steelblue;width: 150px;" class="btn btn-primary " routerLink="/AddService">Add Service</button>
+
+</div>
+
+    
+
+  
+ 
+ 
+
+<section class="articles">
+  <div  *ngFor="let ser of bestService ">
+  <article>
+    <div class="article-wrapper">
+      <figure>
+        <img src="data:image/jpeg;base64,{{ser.picture}}" alt=""/>
+      </figure>
+      <div class="article-body">
+        <h2><span>{{ser.title}}</span>
+        </h2>
+        <p>
+          <span>{{ser.description}}</span>
+      </p>
+
+        <a href="#" class="read-more">
+          <span>{{ser.price}}DT</span>
+          <span style="margin-left: 110px;">likes: {{ser.isLiked}}</span>
+          <span style="margin-left: 60px;">dislikes: {{ser.isDisliked }}</span>
+
+          <span class="sr-only">about this is some title</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  
+  </article>
+  <button class="btn btn-danger" style="margin-right: 5px;" (click)="deleteService(ser.id_service)">delete</button>
+  <button class="btn btn-danger" style="margin-right: 5px;" (click)="likeService(ser.id_service)">Like</button>
+  <button class="btn btn-danger" style="margin-right: 5px;" (click)="dislikeService(ser.id_service)">Dislike</button>
+  <button class="btn btn-danger" style="margin-right: 5px;" routerLink="/UpdateService/{{ser.id_service}}">Update</button>
+  <button *ngIf="ser.Picture == null" class="btn btn-success" style="margin-right: 10px; margin-top: 0x;" routerLink="/AddImage/{{ser.id_service}}">Image</button>
+  <a href="/oneService/{{ ser.id_service}}" class="btn ">Details<span class="material-icons"></span></a>
+
+
+  </div>
+</section>
+    
+
+
+
+
+
+
+
+
+
+
+
+

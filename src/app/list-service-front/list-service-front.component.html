@@ -1,0 +1,47 @@
+
+
+
+
+<input type="text" name="c" [(ngModel)]="searchtext" class="form-control bg-gradient-light px-4" placeholder="Search">
+<br>
+<div class="container">
+  <div class="row">
+    <article class="profile" *ngFor="let service of services | filter:searchtext" style="margin-left: 60px;margin-bottom: 80px;">
+      <div class="profile-image">
+        <img src="data:image/jpeg;base64,{{service.picture}}" alt="img" />
+      </div>
+      <h2 class="profile-username">{{service.title}}</h2>
+      <small class="profile-user-handle"> {{service.description}}</small>
+      <strong >Likes: {{service.isLiked}}</strong>
+      <strong>Dislikes: {{service.isDisliked }}</strong>
+      <div class="profile-actions">
+        <button class="btn btn--primary" routerLink="/AddAppointements">Appointment</button>
+        <button class="btn btn--icon" (click)="likeService(service.id_service)">
+          <i class="fa fa-thumbs-up"></i>
+        </button>
+        <button class="btn btn--icon" (click)="dislikeService(service.id_service)">
+          <i class="fa fa-thumbs-down"></i>
+        </button>
+      </div>
+      <button class="btn btn-primary" routerLink="/oneService/{{ service.id_service}}" >Details</button>
+    </article>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+
+  <ol style="--length: {{forums.length}}" role="list" >
+    <li *ngFor="let f of forums | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i=index" style="--i: {{i}}">
+
+      <div>
+        <h3><a (click)="forumById(f.id_forum)"> {{f.title}}</a></h3>
+        <p>{{f.description}}</p>
+        
+        <div style="margin-top:30px;" *ngIf="role=='ROLE_ADMIN' ">
+          <hr class="main-hr"/>
+          <button class="icon-btn add-btn" (click)="updateForum(f.id_forum)">
+            <div class="add-icon"></div>
+            <div class="btn-txt">Modify</div>
+          </button>
+          <button class="icon-btn add-btn" (click)="deleteForum(f.id_forum)">  
+            <div class="btn-txt">Remove</div>
+          </button>
+        </div>
+      </div>
+   
+    </li>
+    <div class="pagination-container">
+      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+  </ol>
+
+
+
+<div id="container" style="margin-bottom: 150px; padding-top: 50px;">
+  <button class="learn-more" 
+  data-toggle="modal" data-target="#threadModal">
+    <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+    </span>
+    <span class="button-text" >Add forum</span>
+  </button>
+</div>
+<br>
+<div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="threadModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          
+              <div class="modal-header d-flex align-items-center bg-primary text-white">
+                  <h6 class="modal-title mb-0" id="threadModalLabel">New FORUM  </h6>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+             <app-add-forum></app-add-forum>
+      </div>
+  </div>
+</div>
+
+
+
